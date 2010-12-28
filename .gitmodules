@@ -4,3 +4,21 @@
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
+[submodule "bundle/vim-perl"]
+	path = bundle/vim-perl
+	url = git://github.com/petdance/vim-perl.git
+[submodule "bundle/vim-mru"]
+	path = bundle/vim-mru
+	url = git://github.com/ornicar/vim-mru.git
+[submodule "bundle/vim-surround"]
+	path = bundle/vim-surround
+	url = git://github.com/tpope/vim-surround.git
+[submodule "bundle/vim-matchit"]
+	path = bundle/vim-matchit
+	url = git://github.com/edsono/vim-matchit.git
+[submodule "bundle/perl-support"]
+	path = bundle/perl-support
+	url = git://github.com/vim-scripts/perl-support.vim.git
+[submodule "bundle/perl-moose"]
+	path = bundle/perl-moose
+	url = git://github.com/vim-scripts/Perl-MooseX.Declare-Syntax.git
