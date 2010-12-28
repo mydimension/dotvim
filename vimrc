@@ -29,10 +29,6 @@ set undolevels=1000
 set title
 set nobackup
 
-" make perl-support work nicely with pathogen
-"let g:Perl_Support_Root_Dir = $HOME.'/.vim/bundle/perl-support'
-"let g:Perl_GlobalTemplateFile = $HOME.'/.vim/bundle/perl-support/perl-support/templates/Templates'
-
 let NERDTreeShowHidden = 1
 
 if v:version >= 700
