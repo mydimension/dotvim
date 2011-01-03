@@ -12,3 +12,8 @@ Switch to the `~/.vim` directory, and fetch submodules:
 
     cd ~/.vim
     git submodule update --init
+
+The clone and submodule update can also be performed in one fel-swoop
+
+    git clone --recursive git@github.com:mydimension/dotvim.git ~/.vim		[RW]
+    git clone --recursive git://github.com/mydimension/dotvim.git ~/.vim	[RO]
