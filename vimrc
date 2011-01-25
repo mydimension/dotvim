@@ -66,10 +66,10 @@ nmap <leader>ux :se ff=unix<CR>
 
 map cc zfa{
 
-au BufNewFile,BufRead *.bml  set ft=mason
 au BufNewFile,BufRead *.html set ft=mason
 au BufNewFile,BufRead *.cmp  set ft=mason
 au BufNewFile,BufRead *.xmp  set ft=mason
+au BufNewFile,BufRead */autohandler set ft=mason
 
 " save state of folds when we leave, and restore when we come back
 au BufWinLeave * silent! mkview
@@ -87,3 +87,4 @@ let javaScript_fold=1
 
 " this is for MySQL's 'edit' command while in the client
 au! BufRead,BufNewFile /tmp/sql* set ft=sql
+au! BufRead,BufNewFile /tmp/psql* set ft=sql
