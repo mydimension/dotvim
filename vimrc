@@ -64,6 +64,10 @@ map <leader>a :w !perl -cw 2>&1 \| more<CR>
 " convert line endings to unix format
 nmap <leader>ux :se ff=unix<CR>
 
+" while in insert mode, press Ctrl-Return to create a new line below the
+" current one
+inoremap <c-cr> <esc>A<cr>
+
 map cc zfa{
 
 au BufNewFile,BufRead *.bml  set ft=mason
