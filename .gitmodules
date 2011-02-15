@@ -37,6 +37,3 @@
 [submodule "bundle/up"]
 	path = bundle/up
 	url = git://github.com/kossnocorp/up.vim.git
-[submodule "bundle/perl-mason"]
-	path = bundle/perl-mason
-	url = git://github.com/jonswar/perl-mason.git
