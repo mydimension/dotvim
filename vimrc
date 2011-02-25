@@ -60,7 +60,8 @@ nnoremap <silent> <leader>t :%!perltidy -q<Enter>
 vnoremap <silent> <leader>t :!perltidy -q<Enter>
 
 " perl syntax checking with warnings
-map <leader>a :w !perl -cw 2>&1 \| more<CR>
+"map <leader>a :w !perl -cw 2>&1 \| more<CR>
+noremap <buffer> <silent> <leader>a :call Perl_SyntaxCheck()<CR>
 
 " convert line endings to unix format
 nmap <leader>ux :se ff=unix<CR>
