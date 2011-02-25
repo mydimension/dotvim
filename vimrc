@@ -28,6 +28,7 @@ set history=1000
 set undolevels=1000
 set title
 set nobackup
+set nohlsearch
 
 let NERDTreeShowHidden = 1
 
