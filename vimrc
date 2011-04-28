@@ -1,10 +1,5 @@
 filetype off
 
-set directory=~/.vim/tmp
-if filereadable('.vimrc.local')
-	source .vimrc.local
-endif
-
 " make easy loading for future plugins
 silent! call pathogen#runtime_append_all_bundles()
 silent! call pathogen#helptags()
@@ -31,6 +26,7 @@ set ignorecase
 set smartcase
 set history=1000
 set undolevels=1000
+set directory=~/.vim/tmp
 set title
 set nobackup
 set nohlsearch
@@ -95,3 +91,7 @@ let javaScript_fold=1
 " this is for MySQL's 'edit' command while in the client
 au! BufRead,BufNewFile /tmp/sql* set ft=sql
 au! BufRead,BufNewFile /tmp/psql* set ft=sql
+
+if filereadable(expand('~/.vimrc.local'))
+	source ~/.vimrc.local
+endif
