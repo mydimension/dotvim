@@ -1,5 +1,6 @@
 filetype off
 
+set directory=~/.vim/tmp
 if filereadable('.vimrc.local')
 	source .vimrc.local
 endif
@@ -28,7 +29,6 @@ set showmatch
 set incsearch
 set ignorecase
 set smartcase
-set directory=~/.vim/tmp
 set history=1000
 set undolevels=1000
 set title
