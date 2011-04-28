@@ -1,5 +1,9 @@
 filetype off
 
+if filereadable('.vimrc.local')
+	source .vimrc.local
+endif
+
 " make easy loading for future plugins
 silent! call pathogen#runtime_append_all_bundles()
 silent! call pathogen#helptags()
