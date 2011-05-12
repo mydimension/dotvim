@@ -36,7 +36,7 @@ let NERDTreeShowHidden = 1
 if v:version >= 700
 	nmap <leader>l :set list!<CR>
 	set listchars=tab:▸\ ,eol:¬
-	set spell
+    set nospell
 endif
 
 if has('cmdline_info')

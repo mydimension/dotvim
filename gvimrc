@@ -1,1 +1,1 @@
-colorscheme liquidcarbon
+colorscheme up
