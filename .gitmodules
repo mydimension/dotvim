@@ -40,3 +40,6 @@
 [submodule "bundle/gitv"]
 	path = bundle/gitv
 	url = git://github.com/gregsexton/gitv.git
+[submodule "bundle/threesome"]
+	path = bundle/threesome
+	url = git://github.com/sjl/threesome.vim.git
