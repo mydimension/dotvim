@@ -16,9 +16,6 @@
 [submodule "bundle/vim-matchit"]
 	path = bundle/vim-matchit
 	url = git://github.com/edsono/vim-matchit.git
-[submodule "bundle/perl-support"]
-	path = bundle/perl-support
-	url = git://github.com/vim-scripts/perl-support.vim.git
 [submodule "bundle/perl-moose"]
 	path = bundle/perl-moose
 	url = git://github.com/vim-scripts/Perl-MooseX.Declare-Syntax.git
