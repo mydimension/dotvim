@@ -31,6 +31,7 @@ set directory=~/.vim/tmp
 set title
 set nobackup
 set nohlsearch
+let &path = '.,' . substitute($PATH, ':', ',', 'g')
 
 if exists('+colorcolumn')
     set colorcolumn=80
@@ -68,7 +69,11 @@ nnoremap <silent> <leader>t :%!perltidy -q<Enter>
 vnoremap <silent> <leader>t :!perltidy -q<Enter>
 
 " perl syntax checking with warnings
-map <leader>a :w !perl -cw 2>&1 \| more<CR>
+if executable('/opt/local/bin/perl')
+    map <leader>a :w !/opt/local/bin/perl -cw 2>&1 \| more<CR>
+else
+    map <leader>a :w !perl -cw 2>&1 \| more<CR>
+endif
 
 " convert line endings to unix format
 nmap <leader>ux :se ff=unix<CR>
