@@ -107,6 +107,11 @@ let javaScript_fold=1
 au! BufRead,BufNewFile /tmp/sql* set ft=sql
 au! BufRead,BufNewFile /tmp/psql* set ft=sql
 
+au FileType java nnoremap <silent> <buffer> <cr> :JavaSearchContext<cr>
+au FileType java nnoremap <silent> <buffer> <leader>d :JavaDocSearch -x declarations<cr>
+au FileType java nnoremap <silent> <buffer> <leader>i :JavaImport<cr>
+let g:EclimJavaSearchSingleResult='tabnew'
+
 if filereadable(expand('~/.vimrc.local'))
 	source ~/.vimrc.local
 endif
