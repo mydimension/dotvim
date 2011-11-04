@@ -74,6 +74,9 @@ nmap <leader>ux :se ff=unix<CR>
 
 map cc zfa{
 
+noremap H ^
+noremap L g_
+
 au BufNewFile,BufRead *.html set ft=mason
 au BufNewFile,BufRead *.cmp  set ft=mason
 au BufNewFile,BufRead *.xmp  set ft=mason
