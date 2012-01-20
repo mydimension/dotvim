@@ -10,9 +10,6 @@ syntax on
 syntax enable
 set nocompatible
 set backspace=2
-set mouse=a
-"set ttymouse=xterm2
-set ttymouse=xterm
 set autoindent
 "set smartindent
 set copyindent
@@ -39,6 +36,21 @@ if v:version >= 700
 	nmap <leader>l :set list!<CR>
 	set listchars=tab:▸\ ,eol:¬
     set nospell
+endif
+
+if has('mouse')
+    set mouse=a
+    set ttymouse=xterm2
+    if &term =~ "xterm" || &term =~ "screen"
+        " for some reason, doing this directly with 'set ttymouse=xterm2'
+        " doesn't work -- 'set ttymouse?' returns xterm2 but the mouse
+        " makes tmux enter copy mode instead of selecting or scrolling
+        " inside Vim -- but luckily, setting it up from within autocmds
+        " works
+        autocmd VimEnter    * set ttymouse=xterm2
+        autocmd FocusGained * set ttymouse=xterm2
+        autocmd BufEnter    * set ttymouse=xterm2
+    endif
 endif
 
 if has('cmdline_info')
