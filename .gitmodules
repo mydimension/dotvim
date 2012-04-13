@@ -43,3 +43,6 @@
 [submodule "bundle/vim-gummybears-colorscheme"]
 	path = bundle/vim-gummybears-colorscheme
 	url = https://github.com/jelera/vim-gummybears-colorscheme
+[submodule "bundle/vitality"]
+	path = bundle/vitality
+	url = https://github.com/sjl/vitality.vim.git
