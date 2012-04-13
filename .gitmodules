@@ -34,9 +34,6 @@
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = git://github.com/ervandew/supertab.git
-[submodule "bundle/vim-gummybears-colorscheme"]
-	path = bundle/vim-gummybears-colorscheme
-	url = https://github.com/jelera/vim-gummybears-colorscheme
 [submodule "bundle/vitality"]
 	path = bundle/vitality
 	url = https://github.com/sjl/vitality.vim.git
