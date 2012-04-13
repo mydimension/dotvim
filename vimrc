@@ -1,7 +1,7 @@
 filetype off
 
 " make easy loading for future plugins
-silent! call pathogen#runtime_append_all_bundles()
+silent! call pathogen#infect()
 silent! call pathogen#helptags()
 
 filetype plugin indent on
@@ -14,9 +14,10 @@ set autoindent
 "set smartindent
 set copyindent
 set smarttab
-set tabstop=4
-set shiftwidth=4
-set expandtab
+set expandtab     " spaces instead of tabs
+set tabstop=4     " width of a real tab, or no. spaces inserted
+set softtabstop=4 " backspace will go back this many spaces
+set shiftwidth=4  " tab operations will got this far
 set shiftround
 set showmatch
 set incsearch
@@ -28,6 +29,7 @@ set directory=~/.vim/tmp
 set title
 set nobackup
 set nohlsearch
+set scrolloff=5
 let &path = '.,' . substitute($PATH, ':', ',', 'g')
 
 let NERDTreeShowHidden = 1
