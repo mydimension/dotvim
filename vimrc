@@ -33,6 +33,7 @@ set scrolloff=5
 let &path = '.,' . substitute($PATH, ':', ',', 'g')
 
 let NERDTreeShowHidden = 1
+let g:vitality_fix_focus = 0
 
 if v:version >= 700
 	nmap <leader>l :set list!<CR>
