@@ -1,5 +1,3 @@
-filetype off
-
 " make easy loading for future plugins
 silent! call pathogen#infect()
 silent! call pathogen#helptags()
@@ -31,6 +29,8 @@ set nobackup
 set nohlsearch
 set scrolloff=5
 let &path = '.,' . substitute($PATH, ':', ',', 'g')
+
+colorscheme darkdevel
 
 let NERDTreeShowHidden = 1
 
