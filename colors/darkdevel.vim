@@ -90,8 +90,8 @@ let g:Darkdevel.comment.guibg   = 'NONE'
 
 " Status style
 " ============
-  highlight StatusLine      ctermfg=DarkGray    guifg=#0F0F0F     ctermbg=Gray        guibg=#777777   cterm=bold  gui=bold
-  highlight StatusLineNC    ctermfg=DarkGray    guifg=#777777     ctermbg=DarkGray    guibg=#0F0F0F   cterm=bold  gui=bold
+  highlight StatusLine      ctermfg=Black       guifg=#0F0F0F     ctermbg=DarkGray    guibg=#777777   gui=bold  cterm=NONE
+  highlight StatusLineNC    ctermfg=DarkGray    guifg=#777777     ctermbg=Black       guibg=#0F0F0F   gui=bold  cterm=NONE
 
   "highlight TabLine
   "highlight TabLineFill
