@@ -38,9 +38,9 @@ let g:Darkdevel.comment.guibg   = 'NONE'
 " Cursor style
 " ============
   highlight Cursor          ctermfg=NONE        guifg=#000000     ctermbg=NONE        guibg=#FFFFFF
-  "highlight CursorIM      
+  "highlight CursorIM
   highlight CursorColumn    ctermfg=NONE        guifg=NONE        ctermbg=DarkGray    guibg=#0F0F0F
-  highlight CursorLine      ctermfg=NONE        guifg=NONE        ctermbg=DarkGray    guibg=#0F0F0F
+  highlight CursorLine      ctermfg=NONE        guifg=NONE        ctermbg=NONE        guibg=#0F0F0F
 
 " Directory style
 " ===============
@@ -49,9 +49,9 @@ let g:Darkdevel.comment.guibg   = 'NONE'
 " Diff text style
 " ===============
   highlight DiffAdd         ctermfg=DarkGreen   guifg=#32BE32     ctermbg=NONE        guibg=NONE
-  "highlight DiffChange  
+  "highlight DiffChange
   highlight DiffDelete      ctermfg=DarkRed     guifg=#BE3232     ctermbg=NONE        guibg=NONE
-  "highlight DiffText  
+  "highlight DiffText
 
 " Text and message style
 " ======================
@@ -154,19 +154,19 @@ let g:Darkdevel.comment.guibg   = 'NONE'
 
 " Style for special symbols
 " -------------------------
-  "highlight Special         
-  "highlight SpecialChar     
-  "highlight Tag             
-  "highlight Delimiter       
-  "highlight SpecialComment  
-  "highlight Debug           
+  "highlight Special
+  "highlight SpecialChar
+  "highlight Tag
+  "highlight Delimiter
+  "highlight SpecialComment
+  "highlight Debug
 
 " Style for text format
 " ---------------------
-  "highlight Underlined 
-  "highlight Ignore     
-  "highlight Error      
-  "highlight Todo       
+  "highlight Underlined
+  "highlight Ignore
+  "highlight Error
+  "highlight Todo
 
 " Style for Shell Syntax
 " ----------------------
