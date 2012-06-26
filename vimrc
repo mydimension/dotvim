@@ -1,5 +1,6 @@
+let g:pathogen_disabled = []
 if v:version == 700 && !has('patch167')
-    let g:pathogen_disabled = ["tagbar"]
+    call add(g:pathogen_disabled, 'tagbar')
 endif
 
 " make easy loading for future plugins
