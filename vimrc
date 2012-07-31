@@ -7,7 +7,7 @@ endif
 silent! call pathogen#infect()
 silent! call pathogen#helptags()
 
-filetype plugin indent on
+"filetype plugin indent on
 
 syntax on
 syntax enable
@@ -35,7 +35,8 @@ set nohlsearch
 set scrolloff=5
 let &path = '.,' . substitute($PATH, ':', ',', 'g')
 
-colorscheme darkdevel
+" colorscheme darkdevel
+colorscheme lucius
 
 let NERDTreeShowHidden = 1
 let g:vitality_fix_focus = 0
