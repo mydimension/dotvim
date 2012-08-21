@@ -35,8 +35,11 @@ set nohlsearch
 set scrolloff=5
 let &path = '.,' . substitute($PATH, ':', ',', 'g')
 
-" colorscheme darkdevel
-colorscheme lucius
+" force 256 colors, regardless of $TERM
+set t_Co=256
+
+colorscheme darkdevel
+" colorscheme lucius
 
 let NERDTreeShowHidden = 1
 let g:vitality_fix_focus = 0
