@@ -83,8 +83,8 @@ highlight RedundantSpaces ctermbg=blue guibg=blue
 match RedundantSpaces /\s\+$\| \+\ze\t/
 
 " perltidy shortcut
-nnoremap <silent> <leader>t :%!perltidy -q<Enter>
-vnoremap <silent> <leader>t :!perltidy -q<Enter>
+nnoremap <silent> <leader>t :%!perltidy -st -q<Enter>
+vnoremap <silent> <leader>t :!perltidy -st -q<Enter>
 
 " perl syntax checking with warnings
 if executable('/opt/local/bin/perl')
