@@ -1,5 +1,5 @@
 " colorscheme darkdevel
 
 if has("gui_running")
-    set guioptions-=Tr " remove toolbar and scrollbar
+    set guioptions-=T,r " remove toolbar and scrollbar
 endif
