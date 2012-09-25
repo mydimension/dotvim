@@ -7,7 +7,7 @@ endif
 silent! call pathogen#infect()
 silent! call pathogen#helptags()
 
-filetype plugin indent on
+"filetype plugin indent on
 
 syntax on
 syntax enable
@@ -35,7 +35,11 @@ set nohlsearch
 set scrolloff=5
 let &path = '.,' . substitute($PATH, ':', ',', 'g')
 
+" force 256 colors, regardless of $TERM
+set t_Co=256
+
 colorscheme darkdevel
+" colorscheme lucius
 
 let NERDTreeShowHidden = 1
 let g:vitality_fix_focus = 0
@@ -79,8 +83,8 @@ highlight RedundantSpaces ctermbg=blue guibg=blue
 match RedundantSpaces /\s\+$\| \+\ze\t/
 
 " perltidy shortcut
-nnoremap <silent> <leader>t :%!perltidy -q<Enter>
-vnoremap <silent> <leader>t :!perltidy -q<Enter>
+nnoremap <silent> <leader>t :%!perltidy -st -q<Enter>
+vnoremap <silent> <leader>t :!perltidy -st -q<Enter>
 
 " perl syntax checking with warnings
 if executable('/opt/local/bin/perl')
