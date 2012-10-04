@@ -12,9 +12,9 @@ silent! call pathogen#helptags()
 syntax on
 syntax enable
 set nocompatible
-set backspace=2
+set backspace=indent,eol,start
 set autoindent
-"set smartindent
+set smartindent
 set copyindent
 set smarttab
 set expandtab     " spaces instead of tabs
@@ -26,13 +26,23 @@ set showmatch
 set incsearch
 set ignorecase
 set smartcase
+set hlsearch
 set history=1000
 set undolevels=1000
 set directory=~/.vim/tmp
 set title
 set nobackup
-set nohlsearch
 set scrolloff=5
+set encoding=utf-8
+set wildmenu
+set wildmode=list:longest
+set ttyfast
+set laststatus=2
+
+nnoremap / /\v
+vnoremap / /\v
+nnoremap <leader><space> :noh<cr>
+
 let &path = '.,' . substitute($PATH, ':', ',', 'g')
 
 " training wheel OFF
@@ -99,11 +109,7 @@ nnoremap <silent> <leader>t :%!perltidy -st -q<Enter>
 vnoremap <silent> <leader>t :!perltidy -st -q<Enter>
 
 " perl syntax checking with warnings
-if executable('/opt/local/bin/perl')
-    map <leader>a :w !/opt/local/bin/perl -cw 2>&1 \| more<CR>
-else
-    map <leader>a :w !perl -cw 2>&1 \| more<CR>
-endif
+map <leader>a :w !/usr/bin/env perl -cw 2>&1 \| more<cr>
 
 " convert line endings to unix format
 nmap <leader>ux :se ff=unix<CR>
