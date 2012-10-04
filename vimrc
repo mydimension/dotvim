@@ -35,6 +35,18 @@ set nohlsearch
 set scrolloff=5
 let &path = '.,' . substitute($PATH, ':', ',', 'g')
 
+" training wheel OFF
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+nnoremap j gj
+nnoremap k gk
+
 " force 256 colors, regardless of $TERM
 set t_Co=256
 
