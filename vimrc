@@ -33,6 +33,7 @@ set title
 set nobackup
 set nohlsearch
 set scrolloff=5
+set backupskip=/tmp/*,/var/tmp/*,/private/tmp/*
 let &path = '.,' . substitute($PATH, ':', ',', 'g')
 
 " force 256 colors, regardless of $TERM
@@ -130,6 +131,8 @@ au FileType java nnoremap <silent> <buffer> <cr> :JavaSearchContext<cr>
 au FileType java nnoremap <silent> <buffer> <leader>d :JavaDocSearch -x declarations<cr>
 au FileType java nnoremap <silent> <buffer> <leader>i :JavaImport<cr>
 let g:EclimJavaSearchSingleResult='tabnew'
+
+au FileType crontab set nobackup nowritebackup
 
 if filereadable(expand('~/.vimrc.local'))
 	source ~/.vimrc.local
