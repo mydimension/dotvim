@@ -61,8 +61,12 @@ nnoremap k gk
 " force 256 colors, regardless of $TERM
 set t_Co=256
 
-colorscheme darkdevel
+"colorscheme darkdevel
 " colorscheme lucius
+
+set background=dark
+let g:solarized_termtrans=1
+colorscheme solarized
 
 let NERDTreeShowHidden = 1
 let g:vitality_fix_focus = 0
