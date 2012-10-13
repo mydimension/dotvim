@@ -9,6 +9,8 @@ silent! call pathogen#helptags()
 
 "filetype plugin indent on
 
+let g:Powerline_symbols = 'fancy'
+
 syntax on
 syntax enable
 set nocompatible
@@ -90,19 +92,6 @@ if has('mouse')
         autocmd FocusGained * set ttymouse=xterm2
         autocmd BufEnter    * set ttymouse=xterm2
     endif
-endif
-
-if has('cmdline_info')
-	set ruler
-	set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
-"	set rulerformat=%15(%c%V\ %p%%%) 
-	set showcmd
-endif
-
-if has('statusline')
-	set laststatus=2
-"	set statusline=%<%f\ %=\:\b%n\[%{strlen(&ft)?&ft:'none'}/%{&encoding}/%{&fileformat}]%m%r%w\ %l,%c%V\ %P
-	set statusline=%<%f%h%m%r%h%w%y\ %{&ff}\ %{strftime(\"%D\ %T\",getftime(expand(\"%:p\")))}%=\ lin:%l\,%L\ col:%c%V\ %P
 endif
 
 " highlights space characters at the end of lines to point them out
