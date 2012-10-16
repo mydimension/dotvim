@@ -9,8 +9,6 @@ silent! call pathogen#helptags()
 
 "filetype plugin indent on
 
-let g:Powerline_symbols = 'fancy'
-
 syntax on
 syntax enable
 set nocompatible
@@ -70,8 +68,12 @@ set background=dark
 let g:solarized_termtrans=1
 colorscheme solarized
 
-let NERDTreeShowHidden = 1
-let g:vitality_fix_focus = 0
+let Powerline_symbols='fancy'
+let NERDTreeHijackNetrw=1
+let vitality_fix_focus=0
+"let netrw_liststyle=3 " tree-mode
+let netrw_browse_split=4 " open file in previous buffer
+let netrw_preview=1 " preview window in vert-split
 
 if v:version >= 700
 	nmap <leader>l :set list!<CR>
