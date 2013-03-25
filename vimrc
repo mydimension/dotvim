@@ -14,7 +14,7 @@ syntax enable
 set nocompatible
 set backspace=indent,eol,start
 set autoindent
-set smartindent
+"set smartindent
 set copyindent
 set smarttab
 set expandtab     " spaces instead of tabs
@@ -39,6 +39,12 @@ set wildmenu
 set wildmode=list:longest
 set ttyfast
 set laststatus=2
+set cursorline
+set relativenumber
+set colorcolumn=80
+
+" easier to type than /
+let mapleader=','
 
 nnoremap / /\v
 vnoremap / /\v
