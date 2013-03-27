@@ -64,3 +64,6 @@
 [submodule "bundle/mason2"]
 	path = bundle/mason2
 	url = git://github.com/bokutin/mason2.vim.git
+[submodule "bundle/vim-indent-guides"]
+	path = bundle/vim-indent-guides
+	url = git://github.com/nathanaelkane/vim-indent-guides.git
