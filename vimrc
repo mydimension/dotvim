@@ -42,6 +42,7 @@ set laststatus=2
 set cursorline
 set relativenumber
 set colorcolumn=80
+set noesckeys
 
 " easier to type than /
 let mapleader=','
