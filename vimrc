@@ -43,6 +43,11 @@ set cursorline
 set relativenumber
 set colorcolumn=80
 set noesckeys
+set noshowmode
+
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
 
 " easier to type than /
 let mapleader=','
@@ -75,7 +80,6 @@ set background=dark
 let g:solarized_termtrans=1
 colorscheme solarized
 
-let Powerline_symbols='fancy'
 let NERDTreeHijackNetrw=1
 let vitality_fix_focus=0
 "let netrw_liststyle=3 " tree-mode
