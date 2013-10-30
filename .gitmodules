@@ -46,9 +46,6 @@
 [submodule "bundle/vim-powerline"]
 	path = bundle/vim-powerline
 	url = git://github.com/Lokaltog/vim-powerline.git
-[submodule "bundle/fugitive"]
-	path = bundle/fugitive
-	url = git://github.com/tpope/vim-fugitive.git
 [submodule "bundle/plantuml"]
 	path = bundle/plantuml
 	url = git://github.com/aklt/plantuml-syntax.git
