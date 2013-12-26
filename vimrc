@@ -107,10 +107,6 @@ if has('mouse')
     endif
 endif
 
-" highlights space characters at the end of lines to point them out
-highlight RedundantSpaces ctermbg=blue guibg=blue
-match RedundantSpaces /\s\+$\| \+\ze\t/
-
 " perltidy shortcut
 nnoremap <silent> <leader>t :%!perltidy -st -q<Enter>
 vnoremap <silent> <leader>t :!perltidy -st -q<Enter>

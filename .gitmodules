@@ -46,3 +46,6 @@
 [submodule "bundle/supertab"]
     path = bundle/supertab
     url = git://github.com/ervandew/supertab.git
+[submodule "bundle/bad-whitespace"]
+	path = bundle/bad-whitespace
+	url = https://github.com/bitc/vim-bad-whitespace.git
