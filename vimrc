@@ -45,9 +45,10 @@ set colorcolumn=80
 set noesckeys
 set noshowmode
 
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+"python from powerline.vim import setup as powerline_setup
+"python powerline_setup()
+"python del powerline_setup
+let g:airline_powerline_fonts = 1
 
 " easier to type than /
 let mapleader=','
@@ -72,9 +73,6 @@ nnoremap k gk
 
 " force 256 colors, regardless of $TERM
 set t_Co=256
-
-"colorscheme darkdevel
-" colorscheme lucius
 
 set background=dark
 let g:solarized_termtrans=1

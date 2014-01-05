@@ -49,3 +49,12 @@
 [submodule "bundle/bad-whitespace"]
 	path = bundle/bad-whitespace
 	url = https://github.com/bitc/vim-bad-whitespace.git
+[submodule "bundle/vim-airline"]
+	path = bundle/vim-airline
+	url = https://github.com/bling/vim-airline
+[submodule "bundle/vim-tmuxline"]
+	path = bundle/vim-tmuxline
+	url = https://github.com/edkolev/tmuxline.vim
+[submodule "bundle/vim-promptline"]
+	path = bundle/vim-promptline
+	url = https://github.com/edkolev/promptline.vim.git
