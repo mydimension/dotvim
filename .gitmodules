@@ -58,3 +58,6 @@
 [submodule "bundle/vim-promptline"]
 	path = bundle/vim-promptline
 	url = https://github.com/edkolev/promptline.vim.git
+[submodule "bundle/fugituve"]
+	path = bundle/fugituve
+	url = https://github.com/tpope/vim-fugitive
