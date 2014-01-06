@@ -85,8 +85,8 @@ let netrw_browse_split=4 " open file in previous buffer
 let netrw_preview=1 " preview window in vert-split
 
 if v:version >= 700
-	nmap <leader>l :set list!<CR>
-	set listchars=tab:▸\ ,eol:¬
+    nmap <leader>l :set list!<CR>
+    set listchars=tab:▸\ ,eol:¬
     set nospell
 endif
 
@@ -153,5 +153,13 @@ let g:EclimJavaSearchSingleResult='tabnew'
 au FileType crontab set nobackup nowritebackup
 
 if filereadable(expand('~/.vimrc.local'))
-	source ~/.vimrc.local
+    source ~/.vimrc.local
 endif
+
+let g:promptline_theme = 'powerlineclone'
+let g:promptline_preset = {
+    \'a':    [ promptline#slices#host() ],
+    \'b':    [ promptline#slices#user() ],
+    \'c':    [ promptline#slices#cwd(), promptline#slices#jobs() ],
+    \'y':    [ promptline#slices#vcs_branch() ],
+    \'warn': [ promptline#slices#last_exit_code() ] }
