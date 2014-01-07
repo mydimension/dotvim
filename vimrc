@@ -45,13 +45,22 @@ set colorcolumn=80
 set noesckeys
 set noshowmode
 
-"python from powerline.vim import setup as powerline_setup
-"python powerline_setup()
-"python del powerline_setup
-let g:airline_powerline_fonts = 1
-
 " easier to type than /
-let mapleader=','
+let mapleader = ','
+
+let g:signify_vcs_list = ['git', 'hg', 'svn', 'bzr']
+
+let g:airline_powerline_fonts = 1
+let g:airline_theme           = 'powerlineish'
+
+let g:promptline_theme  = 'airline'
+let g:promptline_preset = {
+    \'a':    [ promptline#slices#host() ],
+    \'b':    [ promptline#slices#user() ],
+    \'c':    [ promptline#slices#cwd(), promptline#slices#jobs() ],
+    \'y':    [ promptline#slices#vcs_branch() ],
+    \'z':    [ '$(date +"%m/%d %H:%M:%S")' ],
+    \'warn': [ promptline#slices#last_exit_code() ] }
 
 nnoremap / /\v
 vnoremap / /\v
@@ -155,14 +164,3 @@ au FileType crontab set nobackup nowritebackup
 if filereadable(expand('~/.vimrc.local'))
     source ~/.vimrc.local
 endif
-
-let g:airline_theme = 'powerlineish'
-
-let g:promptline_theme = 'airline'
-let g:promptline_preset = {
-    \'a':    [ promptline#slices#host() ],
-    \'b':    [ promptline#slices#user() ],
-    \'c':    [ promptline#slices#cwd(), promptline#slices#jobs() ],
-    \'y':    [ promptline#slices#vcs_branch() ],
-    \'z':    [ '$(date +"%m/%d %H:%M:%S")' ],
-    \'warn': [ promptline#slices#last_exit_code() ] }
