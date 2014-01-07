@@ -53,8 +53,9 @@ let g:signify_vcs_list = ['git', 'hg', 'svn', 'bzr']
 let g:airline_powerline_fonts = 1
 let g:airline_theme           = 'powerlineish'
 
-let g:promptline_theme  = 'airline'
-let g:promptline_preset = {
+let g:promptline_theme   = 'airline'
+let g:promptline_symbols = { 'dir_sep': '/' }
+let g:promptline_preset  = {
     \'a':    [ promptline#slices#host() ],
     \'b':    [ promptline#slices#user() ],
     \'c':    [ promptline#slices#cwd(), promptline#slices#jobs() ],
