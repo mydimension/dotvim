@@ -58,7 +58,7 @@ let g:promptline_symbols = { 'dir_sep': '/' }
 let g:promptline_preset  = {
     \'a':    [ promptline#slices#host() ],
     \'b':    [ promptline#slices#user() ],
-    \'c':    [ promptline#slices#cwd(), promptline#slices#jobs() ],
+    \'c':    [ '$([ $VIRTUAL_ENV ] && echo "($(basename $VIRTUAL_ENV))")', promptline#slices#cwd(), promptline#slices#jobs() ],
     \'y':    [ promptline#slices#vcs_branch() ],
     \'z':    [ '$(date +"%m/%d %H:%M:%S")' ],
     \'warn': [ promptline#slices#last_exit_code() ] }
