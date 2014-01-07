@@ -156,10 +156,13 @@ if filereadable(expand('~/.vimrc.local'))
     source ~/.vimrc.local
 endif
 
-let g:promptline_theme = 'powerlineclone'
+let g:airline_theme = 'powerlineish'
+
+let g:promptline_theme = 'airline'
 let g:promptline_preset = {
     \'a':    [ promptline#slices#host() ],
     \'b':    [ promptline#slices#user() ],
     \'c':    [ promptline#slices#cwd(), promptline#slices#jobs() ],
     \'y':    [ promptline#slices#vcs_branch() ],
+    \'z':    [ '$(date +"%m/%d %H:%M:%S")' ],
     \'warn': [ promptline#slices#last_exit_code() ] }
