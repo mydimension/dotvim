@@ -61,3 +61,6 @@
 [submodule "bundle/fugituve"]
 	path = bundle/fugituve
 	url = https://github.com/tpope/vim-fugitive
+[submodule "bundle/signify"]
+	path = bundle/signify
+	url = https://github.com/mhinz/vim-signify.git
