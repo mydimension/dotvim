@@ -67,11 +67,11 @@ let g:airline_theme           = 'powerlineish'
 let g:promptline_theme   = 'airline'
 let g:promptline_symbols = { 'dir_sep': '/' }
 let g:promptline_preset  = {
-    \'a':    [ '$([ $VIRTUAL_ENV ] && echo "($(basename $VIRTUAL_ENV))")', promptline#slices#host() ],
+    \'a':    [ '$([[ -n "${VIRTUAL_ENV:-}" ]] && echo "(${VIRTUAL_ENV##*/})")', promptline#slices#host() ],
     \'b':    [ promptline#slices#user() ],
     \'c':    [ promptline#slices#cwd(), promptline#slices#jobs() ],
     \'y':    [ promptline#slices#vcs_branch() ],
-    \'z':    [ '$(date +"%m/%d %H:%M:%S")' ],
+    \'z':    [ '$([[ -n ${ZSH_VERSION:-} ]] && print %D\{%m/%d %H:%M:%S\} || printf "%s" \\D{%H:%M:%S})' ],
     \'warn': [ promptline#slices#last_exit_code() ] }
 
 nnoremap / /\v
