@@ -45,10 +45,21 @@ set colorcolumn=80
 set noesckeys
 set noshowmode
 
+" force 256 colors, regardless of $TERM
+set t_Co=256
+
+set background=dark
+let g:solarized_termtrans=1
+colorscheme solarized
+
 " easier to type than /
 let mapleader = ','
 
 let g:signify_vcs_list = ['git', 'hg', 'svn', 'bzr']
+
+let g:airline#extensions#tmuxline#snapshot_file = '~/dotfiles/tmuxline.conf'
+let g:airline#extensions#hunks#non_zero_only    = 1
+let g:airline#extensions#tabline#enabled        = 1
 
 let g:airline_powerline_fonts = 1
 let g:airline_theme           = 'powerlineish'
@@ -56,9 +67,9 @@ let g:airline_theme           = 'powerlineish'
 let g:promptline_theme   = 'airline'
 let g:promptline_symbols = { 'dir_sep': '/' }
 let g:promptline_preset  = {
-    \'a':    [ promptline#slices#host() ],
+    \'a':    [ '$([ $VIRTUAL_ENV ] && echo "($(basename $VIRTUAL_ENV))")', promptline#slices#host() ],
     \'b':    [ promptline#slices#user() ],
-    \'c':    [ '$([ $VIRTUAL_ENV ] && echo "($(basename $VIRTUAL_ENV))")', promptline#slices#cwd(), promptline#slices#jobs() ],
+    \'c':    [ promptline#slices#cwd(), promptline#slices#jobs() ],
     \'y':    [ promptline#slices#vcs_branch() ],
     \'z':    [ '$(date +"%m/%d %H:%M:%S")' ],
     \'warn': [ promptline#slices#last_exit_code() ] }
@@ -80,13 +91,6 @@ inoremap <left> <nop>
 inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
-
-" force 256 colors, regardless of $TERM
-set t_Co=256
-
-set background=dark
-let g:solarized_termtrans=1
-colorscheme solarized
 
 let NERDTreeHijackNetrw=1
 let vitality_fix_focus=0
@@ -122,24 +126,18 @@ vnoremap <silent> <leader>t :!perltidy -st -q<Enter>
 " perl syntax checking with warnings
 map <leader>a :w !/usr/bin/env perl -cw 2>&1 \| more<cr>
 
-" convert line endings to unix format
-nmap <leader>ux :se ff=unix<CR>
-
-map cc zfa{
-
+" homerow Home & End
 noremap H ^
 noremap L g_
 
-au BufNewFile,BufRead *.html set ft=mason
-au BufNewFile,BufRead *.cmp  set ft=mason
-au BufNewFile,BufRead *.xmp  set ft=mason
-au BufNewFile,BufRead */autohandler set ft=mason
+autocmd BufNewFile,BufRead *.html set ft=mason
+autocmd BufNewFile,BufRead */autohandler set ft=mason
 
 " save state of folds when we leave, and restore when we come back
-au BufWinLeave * silent! mkview
-au BufWinEnter * silent! loadview
+autocmd BufWinLeave * silent! mkview
+autocmd BufWinEnter * silent! loadview
 
-au BufEnter * :syntax sync fromstart
+autocmd BufEnter * :syntax sync fromstart
 
 "Sourced from vim tip: http://vim.wikia.com/wiki/Keep_folds_closed_while_inserting_text
 autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
@@ -148,19 +146,13 @@ autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:las
 let perl_fold=1
 let perl_fold_blocks=1
 let perl_no_extended_vars=1
-
 let javaScript_fold=1
 
 " this is for MySQL's 'edit' command while in the client
-au! BufRead,BufNewFile /tmp/sql* set ft=sql
-au! BufRead,BufNewFile /tmp/psql* set ft=sql
+autocmd! BufRead,BufNewFile /tmp/sql* set ft=sql
+autocmd! BufRead,BufNewFile /tmp/psql* set ft=sql
 
-au FileType java nnoremap <silent> <buffer> <cr> :JavaSearchContext<cr>
-au FileType java nnoremap <silent> <buffer> <leader>d :JavaDocSearch -x declarations<cr>
-au FileType java nnoremap <silent> <buffer> <leader>i :JavaImport<cr>
-let g:EclimJavaSearchSingleResult='tabnew'
-
-au FileType crontab set nobackup nowritebackup
+autocmd FileType crontab set nobackup nowritebackup
 
 if filereadable(expand('~/.vimrc.local'))
     source ~/.vimrc.local
