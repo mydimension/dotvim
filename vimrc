@@ -74,6 +74,17 @@ let g:promptline_preset  = {
     \'z':    [ '$([[ -n ${ZSH_VERSION:-} ]] && print %D\{%m/%d %H:%M:%S\} || printf "%s" \\D{%H:%M:%S})' ],
     \'warn': [ promptline#slices#last_exit_code() ] }
 
+let g:tmuxline_theme = 'airline'
+let g:tmuxline_preset = {
+    \'a':           [ '#S' ],
+    \'c':           [ '#I.#P' ],
+    \'y':           [ '%Y-%m-%d', '%H:%M:%S' ],
+    \'z':           [ '#h' ],
+    \'win':         [ '#I#F', '#W' ],
+    \'cwin':        [ '#I', '#W' ],
+    \'win_options': { 'window-status-activity-attr': 'bold' },
+    \'options':     { 'status-justify': 'left', 'status-interval': '1' } }
+
 nnoremap / /\v
 vnoremap / /\v
 nnoremap <leader><space> :noh<cr>
