@@ -154,11 +154,6 @@ autocmd BufEnter * :syntax sync fromstart
 autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
 autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
 
-let perl_fold=1
-let perl_fold_blocks=1
-let perl_no_extended_vars=1
-let javaScript_fold=1
-
 " this is for MySQL's 'edit' command while in the client
 autocmd! BufRead,BufNewFile /tmp/sql* set ft=sql
 autocmd! BufRead,BufNewFile /tmp/psql* set ft=sql
