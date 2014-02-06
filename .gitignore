@@ -3,4 +3,3 @@ tmp/*
 !tmp/.gitignore
 view/*
 !view/.gitignore
-bundle/eclim/eclim/doc/tags
