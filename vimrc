@@ -3,6 +3,9 @@ if v:version == 700 && !has('patch167')
     call add(g:pathogen_disabled, 'tagbar')
 endif
 
+set rtp+=~/.vim/bundle/dirsettings
+silent! call dirsettings#Install()
+
 " make easy loading for future plugins
 silent! call pathogen#infect()
 silent! call pathogen#helptags()
