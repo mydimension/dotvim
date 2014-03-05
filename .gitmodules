@@ -73,3 +73,6 @@
 [submodule "bundle/dirsettings"]
 	path = bundle/dirsettings
 	url = https://github.com/mantiz/vim-plugin-dirsettings.git
+[submodule "bundle/targets.vim"]
+	path = bundle/targets.vim
+	url = https://github.com/wellle/targets.vim.git
