@@ -89,6 +89,9 @@ let g:tmuxline_preset = {
     \'win_options': { 'window-status-activity-attr': 'bold' },
     \'options':     { 'status-justify': 'left', 'status-interval': '1' } }
 
+let g:syntastic_enable_perl_checker = 1
+let g:syntastic_perl_checkers = ['perl', 'perlcritic']
+
 nnoremap / /\v
 vnoremap / /\v
 nnoremap <leader><space> :noh<cr>
