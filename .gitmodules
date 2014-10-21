@@ -76,3 +76,9 @@
 [submodule "bundle/targets.vim"]
 	path = bundle/targets.vim
 	url = https://github.com/wellle/targets.vim.git
+[submodule "bundle/vimbed"]
+	path = bundle/vimbed
+	url = http://github.com/ardagnir/vimbed
+[submodule "bundle/pterosaur"]
+	path = bundle/pterosaur
+	url = http://github.com/ardagnir/pterosaur
