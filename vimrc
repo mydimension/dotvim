@@ -61,10 +61,11 @@ let mapleader = ','
 
 let g:signify_vcs_list = ['git', 'hg', 'svn', 'bzr']
 
-let g:airline#extensions#tmuxline#snapshot_file = '~/dotfiles/tmuxline.conf'
-let g:airline#extensions#hunks#non_zero_only    = 1
-let g:airline#extensions#tabline#enabled        = 1
-let g:airline#extensions#tabline#show_buffers   = 0
+let g:airline#extensions#tmuxline#snapshot_file   = '~/dotfiles/tmuxline.conf'
+let g:airline#extensions#promptline#snapshot_file = '~/dotfiles/promptline.sh'
+let g:airline#extensions#hunks#non_zero_only      = 1
+let g:airline#extensions#tabline#enabled          = 1
+let g:airline#extensions#tabline#show_buffers     = 0
 
 let g:airline_powerline_fonts = 1
 let g:airline_theme           = 'powerlineish'
@@ -72,10 +73,10 @@ let g:airline_theme           = 'powerlineish'
 let g:promptline_theme   = 'airline'
 let g:promptline_symbols = { 'dir_sep': '/' }
 let g:promptline_preset  = {
-    \'a':    [ '$([[ -n "${VIRTUAL_ENV:-}" ]] && echo "(${VIRTUAL_ENV##*/})")', promptline#slices#host() ],
+    \'a':    [ promptline#slices#python_virtualenv(), promptline#slices#host() ],
     \'b':    [ promptline#slices#user() ],
     \'c':    [ promptline#slices#cwd(), promptline#slices#jobs() ],
-    \'y':    [ promptline#slices#vcs_branch() ],
+    \'y':    [ promptline#slices#vcs_branch(), promptline#slices#git_status() ],
     \'z':    [ '$([[ -n ${ZSH_VERSION:-} ]] && print %D\{%m/%d %H:%M:%S\} || printf "%s" \\D{%H:%M:%S})' ],
     \'warn': [ promptline#slices#last_exit_code() ] }
 
