@@ -82,3 +82,6 @@
 [submodule "bundle/pterosaur"]
 	path = bundle/pterosaur
 	url = http://github.com/ardagnir/pterosaur
+[submodule "bundle/neocomplete"]
+	path = bundle/neocomplete
+	url = https://github.com/Shougo/neocomplete.vim.git
