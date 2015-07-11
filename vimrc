@@ -46,7 +46,7 @@ set laststatus=2
 set relativenumber
 set colorcolumn=80
 "set noesckeys
-set ttimeoutlen=100
+"set ttimeoutlen=100
 set noshowmode
 
 " force 256 colors, regardless of $TERM

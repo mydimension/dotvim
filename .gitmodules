@@ -16,9 +16,6 @@
 [submodule "bundle/html5-syntax"]
 	path = bundle/html5-syntax
 	url = git://github.com/othree/html5-syntax.vim.git
-[submodule "bundle/vitality"]
-	path = bundle/vitality
-	url = git://github.com/sjl/vitality.vim.git
 [submodule "bundle/vim-colors-solarized"]
 	path = bundle/vim-colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
@@ -85,3 +82,6 @@
 [submodule "bundle/neocomplete"]
 	path = bundle/neocomplete
 	url = https://github.com/Shougo/neocomplete.vim.git
+[submodule "bundle/terminus"]
+	path = bundle/terminus
+	url = https://github.com/wincent/terminus.git
