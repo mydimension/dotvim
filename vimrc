@@ -42,7 +42,7 @@ set wildmenu
 set wildmode=list:longest
 set ttyfast
 set laststatus=2
-" set cursorline
+set cursorline
 set relativenumber
 set colorcolumn=80
 "set noesckeys
