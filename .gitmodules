@@ -88,3 +88,6 @@
 [submodule "bundle/vim-sbt"]
 	path = bundle/vim-sbt
 	url = https://github.com/derekwyatt/vim-sbt.git
+[submodule "bundle/vim-airline-themes"]
+	path = bundle/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes.git
