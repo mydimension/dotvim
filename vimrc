@@ -1,20 +1,51 @@
-let g:pathogen_disabled = ['supertab']
-if v:version == 700 && !has('patch167')
-    call add(g:pathogen_disabled, 'tagbar')
-endif
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
 
-set rtp+=~/.vim/bundle/dirsettings
+" For fresh setup:
+"   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+"   vim +PluginInstall +qall
+
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'bitc/vim-bad-whitespace'
+Plugin 'mantiz/vim-plugin-dirsettings'
+Plugin 'tpope/vim-fugitive'
+Plugin 'othree/html5-syntax.vim'
+Plugin 'bokutin/mason2.vim'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'mhinz/vim-signify'
+" Plugin 'ervandew/supertab'
+Plugin 'scrooloose/syntastic'
+Plugin 'wellle/targets.vim'
+Plugin 'wincent/terminus'
+Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'pangloss/vim-javascript'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+Plugin 'vim-perl/vim-perl'
+Plugin 'edkolev/promptline.vim'
+Plugin 'derekwyatt/vim-sbt'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'tpope/vim-surround'
+Plugin 'edkolev/tmuxline.vim'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'vimwiki/vimwiki'
+
+call vundle#end()
+filetype plugin indent on
+
 silent! call dirsettings#Install()
-
-" make easy loading for future plugins
-silent! call pathogen#infect()
-silent! call pathogen#helptags()
-
-"filetype plugin indent on
 
 syntax on
 syntax enable
-set nocompatible
 set backspace=indent,eol,start
 set autoindent
 "set smartindent
