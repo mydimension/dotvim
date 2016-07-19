@@ -39,6 +39,10 @@ Plugin 'edkolev/tmuxline.vim'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'vimwiki/vimwiki'
 
+" port in manually added colors files
+Plugin 'Darkdevel'
+Plugin 'Lucius'
+
 call vundle#end()
 filetype plugin indent on
 
