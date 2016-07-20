@@ -1,55 +1,49 @@
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
+" auto-install vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
 
-" For fresh setup:
-"   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-"   vim +PluginInstall +qall
+call plug#begin('~/.vim/bundle')
+Plug 'bitc/vim-bad-whitespace'
+Plug 'mantiz/vim-plugin-dirsettings'
+Plug 'tpope/vim-fugitive'
+Plug 'othree/html5-syntax.vim'
+Plug 'bokutin/mason2.vim'
+Plug 'Shougo/neocomplete.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'mhinz/vim-signify'
+Plug 'scrooloose/syntastic'
+Plug 'wellle/targets.vim'
+Plug 'wincent/terminus'
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'altercation/vim-colors-solarized'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'pangloss/vim-javascript'
+Plug 'plasticboy/vim-markdown'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'edkolev/promptline.vim'
+Plug 'derekwyatt/vim-sbt'
+Plug 'derekwyatt/vim-scala'
+Plug 'tpope/vim-surround'
+Plug 'edkolev/tmuxline.vim'
+Plug 'tpope/vim-unimpaired'
+Plug 'vimwiki/vimwiki'
 
-call vundle#begin()
+" disabled but not forgotten
+" Plug 'ervandew/supertab'
+" Plug 'vim-perl/vim-perl'
+call plug#end()
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-Plugin 'bitc/vim-bad-whitespace'
-Plugin 'mantiz/vim-plugin-dirsettings'
-Plugin 'tpope/vim-fugitive'
-Plugin 'othree/html5-syntax.vim'
-Plugin 'bokutin/mason2.vim'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'mhinz/vim-signify'
-" Plugin 'ervandew/supertab'
-Plugin 'scrooloose/syntastic'
-Plugin 'wellle/targets.vim'
-Plugin 'wincent/terminus'
-Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'pangloss/vim-javascript'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'jeffkreeftmeijer/vim-numbertoggle'
-Plugin 'vim-perl/vim-perl'
-Plugin 'edkolev/promptline.vim'
-Plugin 'derekwyatt/vim-sbt'
-Plugin 'derekwyatt/vim-scala'
-Plugin 'tpope/vim-surround'
-Plugin 'edkolev/tmuxline.vim'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'vimwiki/vimwiki'
-
-" port in manually added colors files
-Plugin 'Darkdevel'
-Plugin 'Lucius'
-
-call vundle#end()
 filetype plugin indent on
 
 silent! call dirsettings#Install()
 
 syntax on
 syntax enable
+set nocompatible
 set backspace=indent,eol,start
 set autoindent
 "set smartindent
