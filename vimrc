@@ -100,7 +100,7 @@ if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-" inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+
 " For smart TAB completion.
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" :
     \ <SID>check_back_space() ? "\<TAB>" :
@@ -111,7 +111,7 @@ function! s:check_back_space()
 endfunction
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-  return neocomplete#close_popup() . "\<CR>"
+    return neocomplete#close_popup() . "\<CR>"
 endfunction
 
 let g:signify_vcs_list = ['git', 'hg', 'svn', 'bzr']
@@ -167,6 +167,10 @@ inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
 
+" homerow Home & End
+noremap H ^
+noremap L g_
+
 let NERDTreeHijackNetrw=1
 let vitality_fix_focus=0
 "let netrw_liststyle=3 " tree-mode
@@ -194,20 +198,6 @@ if has('mouse')
     endif
 endif
 
-" perltidy shortcut
-nnoremap <silent> <leader>t :%!perltier -st -q<Enter>
-vnoremap <silent> <leader>t :!perltier -st -q<Enter>
-
-" perl syntax checking with warnings
-map <leader>a :w !/usr/bin/env perl -cw 2>&1 \| more<cr>
-
-" homerow Home & End
-noremap H ^
-noremap L g_
-
-autocmd BufNewFile,BufRead *.html set ft=mason
-autocmd BufNewFile,BufRead */autohandler set ft=mason
-
 " save state of folds when we leave, and restore when we come back
 autocmd BufWinLeave * silent! mkview
 autocmd BufWinEnter * silent! loadview
@@ -217,10 +207,6 @@ autocmd BufEnter * :syntax sync fromstart
 "Sourced from vim tip: http://vim.wikia.com/wiki/Keep_folds_closed_while_inserting_text
 autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
 autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
-
-" this is for MySQL's 'edit' command while in the client
-autocmd! BufRead,BufNewFile /tmp/sql* set ft=sql
-autocmd! BufRead,BufNewFile /tmp/psql* set ft=sql
 
 autocmd FileType crontab set nobackup nowritebackup
 
