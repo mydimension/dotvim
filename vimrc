@@ -12,7 +12,7 @@ call plug#begin('~/.vim/bundle')
     Plug 'othree/html5-syntax.vim'
     Plug 'bokutin/mason2.vim'
     Plug 'Shougo/neocomplete.vim'
-    Plug 'scrooloose/nerdtree'
+    Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
     Plug 'mhinz/vim-signify'
     Plug 'scrooloose/syntastic'
     Plug 'wellle/targets.vim'
@@ -32,9 +32,8 @@ call plug#begin('~/.vim/bundle')
     Plug 'tpope/vim-unimpaired'
     Plug 'vimwiki/vimwiki'
 
-    " disabled but not forgotten
-    " Plug 'ervandew/supertab'
-    " Plug 'vim-perl/vim-perl'
+    " disabled due to slowness
+    Plug 'vim-perl/vim-perl', { 'on': [] }
 call plug#end()
 
 filetype plugin indent on
@@ -85,6 +84,8 @@ set background=dark
 let g:solarized_termtrans=1
 colorscheme solarized
 
+let &path = '.,' . substitute($PATH, ':', ',', 'g')
+
 " easier to type than /
 let mapleader = ','
 
@@ -92,23 +93,9 @@ let g:acp_enableAtStartup = 0
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
+    let g:neocomplete#sources#omni#input_patterns = {}
 endif
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-    return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-    " For no inserting <CR> key.
-    "return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<s-tab>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS>  neocomplete#smart_close_popup()."\<C-h>"
 
 let g:signify_vcs_list = ['git', 'hg', 'svn', 'bzr']
 
@@ -145,11 +132,15 @@ let g:tmuxline_preset = {
 let g:syntastic_enable_perl_checker = 1
 let g:syntastic_perl_checkers = ['perl', 'perlcritic']
 
+let NERDTreeHijackNetrw=1
+let vitality_fix_focus=0
+"let netrw_liststyle=3 " tree-mode
+let netrw_browse_split=4 " open file in previous buffer
+let netrw_preview=1 " preview window in vert-split
+
 nnoremap / /\v
 vnoremap / /\v
 nnoremap <leader><space> :noh<cr>
-
-let &path = '.,' . substitute($PATH, ':', ',', 'g')
 
 " training wheel OFF
 nnoremap <up> <nop>
@@ -167,11 +158,19 @@ nnoremap k gk
 noremap H ^
 noremap L g_
 
-let NERDTreeHijackNetrw=1
-let vitality_fix_focus=0
-"let netrw_liststyle=3 " tree-mode
-let netrw_browse_split=4 " open file in previous buffer
-let netrw_preview=1 " preview window in vert-split
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+    return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+    " For no inserting <CR> key.
+    "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<s-tab>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS>  neocomplete#smart_close_popup()."\<C-h>"
 
 if v:version >= 700
     nmap <leader>l :set list!<CR>
@@ -203,8 +202,6 @@ autocmd BufEnter * :syntax sync fromstart
 "Sourced from vim tip: http://vim.wikia.com/wiki/Keep_folds_closed_while_inserting_text
 autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
 autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
-
-autocmd FileType crontab set nobackup nowritebackup
 
 if filereadable(expand('~/.vimrc.local'))
     source ~/.vimrc.local
