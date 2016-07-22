@@ -31,6 +31,7 @@ call plug#begin('~/.vim/bundle')
     Plug 'edkolev/tmuxline.vim'
     Plug 'tpope/vim-unimpaired'
     Plug 'vimwiki/vimwiki'
+    Plug 'hdima/python-syntax'
 
     " disabled due to slowness
     Plug 'vim-perl/vim-perl', { 'on': [] }
