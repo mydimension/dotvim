@@ -32,6 +32,7 @@ call plug#begin('~/.vim/bundle')
     Plug 'tpope/vim-unimpaired'
     Plug 'vimwiki/vimwiki'
     Plug 'hdima/python-syntax'
+    Plug 'motus/pig.vim'
 
     " disabled due to slowness
     Plug 'vim-perl/vim-perl', { 'on': [] }
@@ -73,7 +74,7 @@ set ttyfast
 set laststatus=2
 set cursorline
 set relativenumber
-set colorcolumn=80
+set colorcolumn=120
 "set noesckeys
 "set ttimeoutlen=100
 set noshowmode
@@ -112,7 +113,7 @@ let g:airline_theme           = 'powerlineish'
 let g:promptline_theme   = 'airline'
 let g:promptline_symbols = { 'dir_sep': '/' }
 let g:promptline_preset  = {
-    \'a':    [ promptline#slices#python_virtualenv(), promptline#slices#host() ],
+    \'a':    [ promptline#slices#python_virtualenv(), promptline#slices#host({ 'only_if_ssh': 1 }) ],
     \'b':    [ promptline#slices#user() ],
     \'c':    [ promptline#slices#cwd(), promptline#slices#jobs() ],
     \'y':    [ promptline#slices#vcs_branch(), promptline#slices#git_status() ],
