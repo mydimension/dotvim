@@ -33,6 +33,7 @@ call plug#begin('~/.vim/bundle')
     Plug 'vimwiki/vimwiki'
     Plug 'hdima/python-syntax'
     Plug 'motus/pig.vim'
+    Plug 'majutsushi/tagbar'
 
     " disabled due to slowness
     Plug 'vim-perl/vim-perl', { 'on': [] }
