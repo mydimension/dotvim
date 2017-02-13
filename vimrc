@@ -180,7 +180,7 @@ if v:version >= 700
     set nospell
 endif
 
-if has('mouse')
+if has('mouse') && !has('nvim')
     set mouse=a
     set ttymouse=xterm2
     if &term =~ "xterm" || &term =~ "screen"
