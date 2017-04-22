@@ -79,6 +79,8 @@ set colorcolumn=120
 "set noesckeys
 "set ttimeoutlen=100
 set noshowmode
+set splitbelow
+set splitright
 
 " force 256 colors, regardless of $TERM
 set t_Co=256
@@ -154,12 +156,29 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
+
+" j/k traverse screen lines and not logical lines
 nnoremap j gj
 nnoremap k gk
 
 " homerow Home & End
 noremap H ^
 noremap L g_
+
+" Ctrl-Shift-hjkl to move around splits
+function! TmuxMove(direction)
+        let wnr = winnr()
+        silent! execute 'wincmd ' . a:direction
+        " If the winnr is still the same after we moved, it is the last pane
+        if wnr == winnr()
+                call system('tmux select-pane -' . tr(a:direction, 'phjkl', 'lLDUR'))
+        end
+endfunction
+
+nnoremap <silent> <c-h> :call TmuxMove('h')<cr>
+nnoremap <silent> <c-j> :call TmuxMove('j')<cr>
+nnoremap <silent> <c-k> :call TmuxMove('k')<cr>
+nnoremap <silent> <c-l> :call TmuxMove('l')<cr>
 
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
