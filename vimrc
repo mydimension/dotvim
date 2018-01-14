@@ -6,37 +6,44 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/bundle')
-    Plug 'bitc/vim-bad-whitespace'
-    Plug 'mantiz/vim-plugin-dirsettings'
-    Plug 'tpope/vim-fugitive'
-    Plug 'othree/html5-syntax.vim'
-    Plug 'bokutin/mason2.vim'
-    Plug 'Shougo/neocomplete.vim'
-    Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-    Plug 'mhinz/vim-signify'
-    Plug 'scrooloose/syntastic'
-    Plug 'wellle/targets.vim'
-    Plug 'wincent/terminus'
-    Plug 'bling/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
     Plug 'altercation/vim-colors-solarized'
-    Plug 'nathanaelkane/vim-indent-guides'
-    Plug 'pangloss/vim-javascript'
-    Plug 'plasticboy/vim-markdown'
-    Plug 'jeffkreeftmeijer/vim-numbertoggle'
-    Plug 'edkolev/promptline.vim'
+    Plug 'bitc/vim-bad-whitespace'
+    Plug 'bokutin/mason2.vim'
     Plug 'derekwyatt/vim-sbt'
     Plug 'derekwyatt/vim-scala'
-    Plug 'tpope/vim-surround'
+    Plug 'edkolev/promptline.vim'
     Plug 'edkolev/tmuxline.vim'
-    Plug 'tpope/vim-unimpaired'
-    Plug 'vimwiki/vimwiki'
     Plug 'hdima/python-syntax'
-    Plug 'motus/pig.vim'
+    Plug 'jeffkreeftmeijer/vim-numbertoggle'
     Plug 'majutsushi/tagbar'
+    Plug 'mantiz/vim-plugin-dirsettings'
+    Plug 'mhinz/vim-signify'
+    Plug 'motus/pig.vim'
+    Plug 'nathanaelkane/vim-indent-guides'
+    Plug 'othree/html5-syntax.vim'
+    Plug 'pangloss/vim-javascript'
+    Plug 'plasticboy/vim-markdown'
+    Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+    Plug 'scrooloose/syntastic'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-unimpaired'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+    Plug 'vimwiki/vimwiki'
+    Plug 'wellle/targets.vim'
+    Plug 'wincent/terminus'
+
+    if has('nvim')
+        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    else
+        Plug 'Shougo/deoplete.nvim'
+        Plug 'roxma/nvim-yarp'
+        Plug 'roxma/vim-hug-neovim-rpc'
+    endif
 
     " disabled due to slowness
-    Plug 'vim-perl/vim-perl', { 'on': [] }
+    Plug 'vim-perl/vim-perl', { 'branch': 'dev', 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny heredoc-sql method-signatures' }
 call plug#end()
 
 filetype plugin indent on
@@ -95,12 +102,12 @@ let &path = '.,' . substitute($PATH, ':', ',', 'g')
 let mapleader = ','
 
 let g:acp_enableAtStartup = 0
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-if !exists('g:neocomplete#sources#omni#input_patterns')
-    let g:neocomplete#sources#omni#input_patterns = {}
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+if !exists('g:deoplete#omni#input_patterns')
+    let g:deoplete#omni#input_patterns = {}
 endif
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+let g:deoplete#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 let g:signify_vcs_list = ['git', 'hg', 'svn', 'bzr']
 
@@ -191,8 +198,8 @@ endfunction
 inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<s-tab>"
 " <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS>  neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
 
 if v:version >= 700
     nmap <leader>l :set list!<CR>
