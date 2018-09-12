@@ -43,7 +43,7 @@ call plug#begin('~/.vim/bundle')
     endif
 
     " disabled due to slowness
-    Plug 'vim-perl/vim-perl', { 'branch': 'dev', 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny heredoc-sql method-signatures' }
+    Plug 'vim-perl/vim-perl', { 'branch': 'dev', 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny heredoc-sql' }
 call plug#end()
 
 filetype plugin indent on
