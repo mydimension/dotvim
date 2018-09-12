@@ -11,6 +11,7 @@ call plug#begin('~/.vim/bundle')
     Plug 'bokutin/mason2.vim'
     Plug 'derekwyatt/vim-sbt'
     Plug 'derekwyatt/vim-scala'
+    Plug 'editorconfig/editorconfig-vim'
     Plug 'edkolev/promptline.vim'
     Plug 'edkolev/tmuxline.vim'
     Plug 'hdima/python-syntax'
