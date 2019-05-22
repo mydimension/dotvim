@@ -16,6 +16,7 @@ call plug#begin('~/.vim/bundle')
     Plug 'edkolev/tmuxline.vim'
     Plug 'hdima/python-syntax'
     Plug 'jeffkreeftmeijer/vim-numbertoggle'
+    Plug 'lifepillar/pgsql.vim'
     Plug 'majutsushi/tagbar'
     Plug 'mantiz/vim-plugin-dirsettings'
     Plug 'mhinz/vim-signify'
@@ -24,6 +25,7 @@ call plug#begin('~/.vim/bundle')
     Plug 'othree/html5-syntax.vim'
     Plug 'pangloss/vim-javascript'
     Plug 'plasticboy/vim-markdown'
+    Plug 'rhysd/vim-syntax-codeowners'
     Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
     Plug 'scrooloose/syntastic'
     Plug 'tpope/vim-fugitive'
@@ -83,7 +85,7 @@ set wildmode=list:longest
 set ttyfast
 set laststatus=2
 set cursorline
-set relativenumber
+set number relativenumber
 set colorcolumn=120
 "set noesckeys
 "set ttimeoutlen=100
@@ -140,7 +142,6 @@ let g:tmuxline_preset = {
     \'z':           [ '#h' ],
     \'win':         [ '#I#F', '#W' ],
     \'cwin':        [ '#I', '#W' ],
-    \'win_options': { 'window-status-activity-attr': 'bold' },
     \'options':     { 'status-justify': 'left', 'status-interval': '1' } }
 
 let g:syntastic_enable_perl_checker = 1
