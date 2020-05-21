@@ -16,6 +16,7 @@ call plug#begin('~/.vim/bundle')
     Plug 'edkolev/tmuxline.vim'
     Plug 'hdima/python-syntax'
     Plug 'jeffkreeftmeijer/vim-numbertoggle'
+    Plug 'junegunn/vim-easy-align'
     Plug 'lifepillar/pgsql.vim'
     Plug 'majutsushi/tagbar'
     Plug 'mantiz/vim-plugin-dirsettings'
@@ -107,11 +108,12 @@ let mapleader = ','
 
 let g:acp_enableAtStartup = 0
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
-if !exists('g:deoplete#omni#input_patterns')
-    let g:deoplete#omni#input_patterns = {}
-endif
-let g:deoplete#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+call deoplete#custom#option({
+    \ 'smart_case': v:true,
+    \})
+call deoplete#custom#var('omni', 'input_patterns', {
+    \ 'perl': '\h\w*->\h\w*\|\h\w*::',
+    \})
 
 let g:signify_vcs_list = ['git', 'hg', 'svn', 'bzr']
 
@@ -146,6 +148,8 @@ let g:tmuxline_preset = {
 
 let g:syntastic_enable_perl_checker = 1
 let g:syntastic_perl_checkers = ['perl', 'perlcritic']
+
+let python_highlight_all = 1
 
 let NERDTreeHijackNetrw=1
 let vitality_fix_focus=0
@@ -188,6 +192,11 @@ inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<s-tab>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 if v:version >= 700
     nmap <leader>l :set list!<CR>
