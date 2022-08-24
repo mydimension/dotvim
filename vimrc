@@ -9,6 +9,7 @@ call plug#begin('~/.vim/bundle')
     Plug 'altercation/vim-colors-solarized'
     Plug 'bitc/vim-bad-whitespace'
     Plug 'bokutin/mason2.vim'
+    Plug 'dense-analysis/ale'
     Plug 'derekwyatt/vim-sbt'
     Plug 'derekwyatt/vim-scala'
     Plug 'editorconfig/editorconfig-vim'
@@ -28,7 +29,7 @@ call plug#begin('~/.vim/bundle')
     Plug 'plasticboy/vim-markdown'
     Plug 'rhysd/vim-syntax-codeowners'
     Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-    Plug 'scrooloose/syntastic'
+    " Plug 'scrooloose/syntastic'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-unimpaired'
@@ -38,6 +39,8 @@ call plug#begin('~/.vim/bundle')
     Plug 'wellle/targets.vim'
     Plug 'wincent/terminus'
     Plug 'christoomey/vim-tmux-navigator'
+    Plug 'APZelos/blamer.nvim'
+    Plug 'mustache/vim-mustache-handlebars'
 
     if has('nvim')
         Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -146,10 +149,39 @@ let g:tmuxline_preset = {
     \'cwin':        [ '#I', '#W' ],
     \'options':     { 'status-justify': 'left', 'status-interval': '1' } }
 
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_perl_checker = 1
 let g:syntastic_perl_checkers = ['perl', 'perlcritic']
 
-let python_highlight_all = 1
+let g:ale_open_list = 1
+let g:ale_linters = { 'perl': ['perl', 'perlcritic'], }
+"let g:ale_python_auto_pipenv = 1
+let g:ale_perl_perlcritic_showrules = 1
+
+function! _aleCloseWindowIfNotEmpty() abort
+    if getbufvar(bufnr(''), '&buftype') ==# 'quickfix'
+        return
+    endif
+    if g:ale_set_quickfix
+        silent! cclose
+    elseif g:ale_set_loclist
+        silent! lclose
+    endif
+endfunction
+
+autocmd QuitPre * call _aleCloseWindowIfNotEmpty()
+
+let g:blamer_enabled = 1
+let g:blamer_prefix = ' ❯ '
+let g:blamer_date_format = '%Y-%m-%d %H:%M'
+let g:blamer_show_in_visual_modes = 0
+let g:GBlameVirtualTextEnable = 1
+nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
+
+let g:python_highlight_all = 1
 
 let NERDTreeHijackNetrw=1
 let vitality_fix_focus=0
