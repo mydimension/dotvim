@@ -5,11 +5,16 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
+function! Cond(cond, ...)
+    let opts = get(a:000, 0, {})
+    return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
+endfunction
+
 call plug#begin('~/.vim/bundle')
     Plug 'altercation/vim-colors-solarized'
     Plug 'bitc/vim-bad-whitespace'
     Plug 'bokutin/mason2.vim'
-    Plug 'dense-analysis/ale'
+    Plug 'dense-analysis/ale', Cond(!has('g:vscode'))
     Plug 'chaimleib/vim-renpy'
     Plug 'derekwyatt/vim-sbt'
     Plug 'derekwyatt/vim-scala'
