@@ -36,7 +36,6 @@ call plug#begin('~/.vim/bundle')
     Plug 'plasticboy/vim-markdown'
     Plug 'rhysd/vim-syntax-codeowners'
     Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-    " Plug 'scrooloose/syntastic'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-unimpaired'
@@ -50,13 +49,20 @@ call plug#begin('~/.vim/bundle')
     Plug 'APZelos/blamer.nvim'
     Plug 'mustache/vim-mustache-handlebars'
 
-    if has('nvim')
-        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    else
-        Plug 'Shougo/deoplete.nvim'
-        Plug 'roxma/nvim-yarp'
-        Plug 'roxma/vim-hug-neovim-rpc'
-    endif
+    " dadbod
+    Plug 'tpope/vim-dadbod'
+    Plug 'kristijanhusak/vim-dadbod-ui'
+    Plug 'kristijanhusak/vim-dadbod-completion'
+
+    " if has('nvim')
+    "     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    " else
+    "     Plug 'Shougo/deoplete.nvim'
+    "     Plug 'roxma/nvim-yarp'
+    "     Plug 'roxma/vim-hug-neovim-rpc'
+    " endif
+
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
     " disabled due to slowness
     Plug 'vim-perl/vim-perl', { 'branch': 'dev', 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny heredoc-sql' }
@@ -80,6 +86,7 @@ set softtabstop=4 " backspace will go back this many spaces
 set shiftwidth=4  " tab operations will got this far
 set shiftround
 set showmatch
+set signcolumn=yes
 set incsearch
 set ignorecase
 set smartcase
@@ -89,6 +96,7 @@ set undolevels=1000
 set directory=~/.vim/tmp
 set title
 set nobackup
+set nowritebackup
 set scrolloff=5
 set backupskip=/tmp/*,/var/tmp/*,/private/tmp/*
 set encoding=utf-8
@@ -104,6 +112,7 @@ set colorcolumn=120
 set noshowmode
 set splitbelow
 set splitright
+set updatetime=300
 
 " force 256 colors, regardless of $TERM
 set t_Co=256
@@ -118,13 +127,19 @@ let &path = '.,' . substitute($PATH, ':', ',', 'g')
 let mapleader = ','
 
 let g:acp_enableAtStartup = 0
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option({
-    \ 'smart_case': v:true,
-    \})
-call deoplete#custom#var('omni', 'input_patterns', {
-    \ 'perl': '\h\w*->\h\w*\|\h\w*::',
-    \})
+
+let g:coc_global_extensions = [
+    \ 'coc-diagnostic',
+    \ 'coc-docker',
+    \ 'coc-git',
+    \ 'coc-json',
+    \ 'coc-perl',
+    \ 'coc-jedi',
+    \ 'coc-sql',
+    \ 'coc-toml',
+    \ 'coc-vimlsp',
+    \ 'coc-yaml'
+    \ ]
 
 let g:signify_vcs_list = ['git', 'hg', 'svn', 'bzr']
 
@@ -197,6 +212,13 @@ let vitality_fix_focus=0
 let netrw_browse_split=4 " open file in previous buffer
 let netrw_preview=1 " preview window in vert-split
 
+" dadbod (and other) config
+let g:db_ui_use_nerd_fonts = 1
+if has('nvim')
+    let g:db_ui_use_nvim_notify = 1
+endif
+let g:db_ui_hide_schemas = ['pg_temp.*', 'pg_toast_temp.*']
+
 nnoremap / /\v
 vnoremap / /\v
 nnoremap <leader><space> :noh<cr>
@@ -220,18 +242,39 @@ noremap H ^
 noremap L g_
 
 " <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-    return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-    " For no inserting <CR> key.
-    "return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
+"" <cr> confirms completion
+"inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+"" <cr> selects first item and confirms completion
+inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+
 " <TAB>: completion.
-inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<s-tab>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+inoremap <expr><Tab>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><s-tab> coc#pum#visible() ? coc#pum#prev(1) : "\<s-tab>"
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Symbol renaming
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
