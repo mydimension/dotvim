@@ -22,6 +22,7 @@ call plug#begin('~/.vim/bundle')
     Plug 'edkolev/promptline.vim'
     Plug 'edkolev/tmuxline.vim'
     Plug 'hdima/python-syntax'
+    Plug 'github/copilot.vim'
     Plug 'google/yapf', { 'rtp': 'plugins/vim', 'for': 'python' }
     Plug 'jeffkreeftmeijer/vim-numbertoggle'
     Plug 'junegunn/vim-easy-align'
