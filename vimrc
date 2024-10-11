@@ -11,7 +11,9 @@ function! Cond(cond, ...)
 endfunction
 
 call plug#begin('~/.vim/bundle')
-    Plug 'altercation/vim-colors-solarized'
+    Plug 'maxmx03/solarized.nvim',           Cond(has('nvim'))
+    Plug 'altercation/vim-colors-solarized', Cond(!has('nvim'))
+
     Plug 'bitc/vim-bad-whitespace'
     Plug 'bokutin/mason2.vim'
     Plug 'dense-analysis/ale', Cond(!has('g:vscode'))
@@ -54,14 +56,6 @@ call plug#begin('~/.vim/bundle')
     Plug 'tpope/vim-dadbod'
     Plug 'kristijanhusak/vim-dadbod-ui'
     Plug 'kristijanhusak/vim-dadbod-completion'
-
-    " if has('nvim')
-    "     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    " else
-    "     Plug 'Shougo/deoplete.nvim'
-    "     Plug 'roxma/nvim-yarp'
-    "     Plug 'roxma/vim-hug-neovim-rpc'
-    " endif
 
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -120,7 +114,12 @@ set t_Co=256
 
 set background=dark
 let g:solarized_termtrans=1
+
+if has('nvim')
+    call v:lua.require('solarized').setup({'variant': 'summer'})
+endif
 colorscheme solarized
+" endif
 
 let &path = '.,' . substitute($PATH, ':', ',', 'g')
 
