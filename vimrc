@@ -16,6 +16,7 @@ call plug#begin('~/.vim/bundle')
 
     Plug 'bitc/vim-bad-whitespace'
     Plug 'bokutin/mason2.vim'
+    Plug 'christoomey/vim-tmux-navigator'
     Plug 'dense-analysis/ale', Cond(!has('g:vscode'))
     Plug 'chaimleib/vim-renpy'
     Plug 'derekwyatt/vim-sbt'
