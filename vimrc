@@ -29,6 +29,7 @@ call plug#begin('~/.vim/bundle')
     Plug 'google/yapf', { 'rtp': 'plugins/vim', 'for': 'python' }
     Plug 'jeffkreeftmeijer/vim-numbertoggle'
     Plug 'junegunn/vim-easy-align'
+    Plug 'jvirtanen/vim-hcl'
     Plug 'lifepillar/pgsql.vim'
     Plug 'majutsushi/tagbar'
     Plug 'mantiz/vim-plugin-dirsettings'
@@ -38,6 +39,7 @@ call plug#begin('~/.vim/bundle')
     Plug 'othree/html5-syntax.vim'
     Plug 'pangloss/vim-javascript'
     Plug 'plasticboy/vim-markdown'
+    Plug 'petobens/poet-v'
     Plug 'rhysd/vim-syntax-codeowners'
     Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
     Plug 'tpope/vim-fugitive'
